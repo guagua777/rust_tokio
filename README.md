@@ -28,3 +28,7 @@ Spawning the task submits it to the Tokio scheduler, which then ensures that the
 The spawned task may be executed on the same thread as where it was spawned, or it may execute on a different runtime thread. 
 
 The task can also be moved between threads after being spawned.
+
+
+### 进度
+1. Notice that you are allowed to signal the waker more often than necessary

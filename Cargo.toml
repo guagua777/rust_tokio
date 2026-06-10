@@ -1,2 +1,8 @@
 [workspace]
-members = ["async-io", "frame","my-redis", "shared-state"]
+members = [
+    "async-io", 
+    "frame", 
+    "indeep-async", 
+    "my-redis", 
+    "shared-state"
+    ]
