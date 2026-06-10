@@ -29,6 +29,11 @@ The spawned task may be executed on the same thread as where it was spawned, or 
 
 The task can also be moved between threads after being spawned.
 
+### send & sync
+Types that can be sent to a different thread are Send
 
-### 进度
-1. Notice that you are allowed to signal the waker more often than necessary
+Types that can be concurrently accessed through immutable references are Sync.
+
+
+### 
+1. Update the MiniTokio struct.
