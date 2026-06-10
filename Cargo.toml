@@ -1,0 +1,2 @@
+[workspace]
+members = ["async-io", "frame","my-redis", "shared-state"]
