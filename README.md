@@ -35,5 +35,20 @@ Types that can be sent to a different thread are Send
 Types that can be concurrently accessed through immutable references are Sync.
 
 
-### 
-1. Update the MiniTokio struct.
+### mini-tokio总结：
+1. 没有channel的时候，遍历队列，取出任务，调用任务的poll方法
+2. 使用channel和wake，
+    - mini-tokio的spawn，包装Task的spawn
+    - Task的spawn将future发送到channel中
+    - mini-tokio的run方法，从channel中取出任务，调用任务的poll方法
+    - 任务的poll方法，调用future的poll方法，如果future完成，返回future的结果，
+    - 如果future没有完成，从context中获取waker，调用wake方法，再次将task发送到channel中
+    - 然后run方法继续
+3. 对比：
+    - 没有channel的时候，遍历队列，取出任务，执行
+    - 有channel的时候，
+        1. 需要waker wake executor再次执行任务（此处为再次发送到channel中）
+        2. 因为需要发送到channel里面，所以需要记录几个状态
+            1. future的状态
+            2. sender
+
