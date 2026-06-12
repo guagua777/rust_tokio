@@ -19,6 +19,9 @@ operations that cannot complete immediately are suspended to the background
 1. 任务内部是串行的
 2. 任务之间是并行的
 
+###
+tokio::spawn 相当于 java里面的 Executor.execute();
+
 
 ###
 Tasks are the unit of execution managed by the scheduler. 
