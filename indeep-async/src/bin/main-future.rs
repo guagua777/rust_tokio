@@ -84,3 +84,7 @@ impl Future for MainFuture {
         }
     }
 }
+
+pub fn main() {
+    
+}
