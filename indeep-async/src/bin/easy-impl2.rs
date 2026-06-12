@@ -144,3 +144,35 @@ async fn main() {
     // thread::sleep(Duration::from_secs(100));
 }
 
+
+// cx 来自 poll_fn 的闭包参数。具体来说：
+
+// rust
+// poll_fn(move |cx| {   // ← cx 是 poll_fn 传给闭包的参数
+//     ...
+//     let res = Pin::new(&mut delay).poll(cx);
+//     ...
+// }).await;
+// poll_fn 来自第 1 行的导入：
+
+
+// rust
+// use futures::future::poll_fn;
+// 工作原理：
+
+// poll_fn 的签名大致是：
+
+
+// rust
+// pub fn poll_fn<T, F>(f: F) -> PollFn<F>
+// where
+//     F: FnMut(&mut Context<'_>) -> Poll<T>,
+// 它接受一个闭包，这个闭包的参数就是 &mut Context<'_>，也就是 cx。
+
+// 当 poll_fn(...).await 被执行时，底层的 runtime 会：
+
+// 创建一个 PollFn future
+// 当这个 future 被 poll 时，runtime 会构造一个 Context（其中包含了当前任务的 Waker 等信息）
+// 然后调用闭包，把这个 Context 作为参数传入——这就是 cx 的来源
+// 所以 cx 本质上是 Tokio runtime 在 poll 这个 future 时自动提供的执行上下文，里面包含了当前任务的 Waker 等关键信息。你在第 134 行把它传给了 Pin::new(&mut delay).poll(cx)，这样 Delay 的 poll 实现就能拿到 Waker，在延时结束后通过 waker.wake() 唤醒当前任务。
+
