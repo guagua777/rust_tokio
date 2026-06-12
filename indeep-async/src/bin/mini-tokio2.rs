@@ -19,6 +19,7 @@ impl Future for Delay {
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>)
         -> Poll<&'static str>
     {
+        println!("inner future ...... ");
         if Instant::now() >= self.when {
             println!("Hello world");
             Poll::Ready("done")
@@ -178,6 +179,11 @@ pub fn main() {
     mini_tokio.spawn(async {
         let when = Instant::now() + Duration::from_millis(10);
         let future = Delay { when };
+        println!("outer future ...... ");
+
+        if true {
+            return;
+        }
 
         // await就是poll
         let out = future.await;

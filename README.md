@@ -51,4 +51,7 @@ Types that can be concurrently accessed through immutable references are Sync.
         2. 因为需要发送到channel里面，所以需要记录几个状态
             1. future的状态
             2. sender
+    - outer future 如何调用 inner future，或者说是outer future如何包装inner future的？
+        1. tokio内部把inner future包装在outer future中，参考main-future.rs，会自动生成一个枚举类，该枚举类实现Future trait，里面内容为outer future，在该outer future里面封装了inner future
+    - 总归还是没有continuation的思路清晰
 

@@ -66,6 +66,11 @@ fn main() {
     mini_tokio.spawn(async {
         let when = Instant::now() + Duration::from_millis(10);
         let future = Delay { when };
+        println!("outer future ...... ");
+
+        if true {
+            return;
+        }
 
         // await就是poll
         let out = future.await;
