@@ -3,6 +3,6 @@ members = [
     "async-io", 
     "frame", 
     "indeep-async", 
-    "my-redis", 
+    "my-redis", "select", 
     "shared-state"
     ]

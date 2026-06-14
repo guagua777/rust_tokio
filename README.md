@@ -32,6 +32,9 @@ The spawned task may be executed on the same thread as where it was spawned, or 
 
 The task can also be moved between threads after being spawned.
 
+### 
+So far, when we wanted to add concurrency to the system, we spawned a new task
+
 ### send & sync
 Types that can be sent to a different thread are Send
 
