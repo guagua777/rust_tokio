@@ -5,4 +5,4 @@ members = [
     "indeep-async", 
     "my-redis", "select", 
     "shared-state"
-    ]
+    , "stream"]

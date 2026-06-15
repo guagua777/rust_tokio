@@ -696,6 +696,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "stream"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "mini-redis",
+ "tokio",
+ "tokio-stream",
+]
+
+[[package]]
 name = "strsim"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
