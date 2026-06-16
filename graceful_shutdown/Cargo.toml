@@ -1,5 +1,5 @@
 [package]
-name = "stream"
+name = "graceful_shutdown"
 version = "0.1.0"
 edition = "2024"
 
@@ -9,3 +9,6 @@ mini-redis = "0.4"
 bytes = "1"
 tokio-stream = "0.1"
 async-stream = "0.3.6"
+tokio-util = { version = "0.7.18", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"

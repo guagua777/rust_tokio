@@ -1,11 +1,12 @@
 [package]
-name = "stream"
+name = "tokio_test_1"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-tokio = { version = "1", features = ["full"] }
+tokio = { version = "1", features = ["full", "test-util"] }
 mini-redis = "0.4"
 bytes = "1"
 tokio-stream = "0.1"
 async-stream = "0.3.6"
+tokio-test = "0.4.5"
