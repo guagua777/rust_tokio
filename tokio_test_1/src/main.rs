@@ -29,3 +29,7 @@ async fn interval_with_paused_time() {
     })
     .await;
 }
+
+pub fn main() {
+    
+}
