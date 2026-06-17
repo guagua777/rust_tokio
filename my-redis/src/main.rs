@@ -10,9 +10,12 @@ async fn main() {
     // Bind the listener to the address
     let listener = TcpListener::bind("127.0.0.1:6379").await.unwrap();
 
+
     // loop {
     //     // The second item contains the IP and port of the new connection.
     //     let (socket, _) = listener.accept().await.unwrap();
+    //     // It processes inbound requests one at a time
+    //     // 一次只能处理一个请求
     //     process(socket).await;
     // }
 

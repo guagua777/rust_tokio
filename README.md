@@ -1,4 +1,10 @@
 # rust_tokio
+1. https://ryhl.io/blog/async-what-is-blocking/#the-rayon-crate
+2. https://github.com/tokio-rs/mini-redis
+3. https://github.com/tokio-rs/website
+4. https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md#2-if-t-static-then-t-must-be-valid-for-the-entire-program
+5. https://draft.ryhl.io/blog/shared-mutable-state/
+6. https://draft.ryhl.io/blog/shared-mutable-state/
 
 ## 什么时候使用异步？
 operations that cannot complete immediately are suspended to the background
@@ -39,6 +45,9 @@ So far, when we wanted to add concurrency to the system, we spawned a new task
 Types that can be sent to a different thread are Send
 
 Types that can be concurrently accessed through immutable references are Sync.
+
+### task
+A task is an operation running on the Tokio runtime, created by the tokio::spawn or Runtime::block_on function. Tools for creating futures by combining them such as .await and join! do not create new tasks, and each combined part is said to be "in the same task".
 
 
 ### mini-tokio总结：

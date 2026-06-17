@@ -71,6 +71,8 @@ async fn main() {
 
         tx.send(cmd).await.unwrap();
 
+        // 为了获取对应发送的结果
+
         // 这个地方为什么？
         // Await the response
         let res = resp_rx.await;
