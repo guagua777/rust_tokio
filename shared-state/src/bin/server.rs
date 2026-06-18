@@ -4,6 +4,10 @@ use std::sync::{Arc, Mutex};
 
 use bytes::Bytes;
 
+// 语义：
+// 从语义的角度来思考该使用什么智能指针
+// 多个线程同时访问该mutex，所以使用Arc封装Mutex
+// 该mutex里面锁定的内容为一个HashMap
 type Db = Arc<Mutex<HashMap<String, Bytes>>>;
 
 
